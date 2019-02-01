@@ -1,8 +1,9 @@
 class School {
-  constructor(name, level, numberOfStudents) {
+  constructor(name, level, numberOfStudents, averageTestScores) {
     this._name = name;
     this._level = level;
     this._numberOfStudents = numberOfStudents;
+    this._averageTestScores = averageTestScores;
   }
 
   get name() {
@@ -17,11 +18,15 @@ class School {
     return this._numberOfStudents;
   }
 
-  set numberOfStudents(newNumberOfStudents) {
-    if (typeof newNumberOfStudents === "String") {
+  get averageTestScores() {
+    return this._averageTestScores;
+  }
+
+  set numberOfStudents(value) {
+    if (value.isNaN()) {
       console.log("Invalid input: numberOfStudents must be set to a Number.");
     } else {
-      return (this.numberOfStudents = newNumberOfStudents);
+      return (this._numberOfStudents = newNumberOfStudents);
     }
   }
 
@@ -35,14 +40,13 @@ class School {
 
   static pickSubstituteTeacher(substituteTeachers) {
     let random = Math.floor(Math.random() * substituteTeachers.length);
-    return substituteTeachers[random];
+    return console.log(substituteTeachers[random]);
   }
 }
 
 class PrimarySchool extends School {
   constructor(name, numberOfStudents, pickupPolicy) {
-    super(name, numberOfStudents);
-    this._level = "primary";
+    super(name, "primary", numberOfStudents);
     this._numberOfStudents = numberOfStudents;
     this._pickupPolicy = pickupPolicy;
   }
@@ -58,13 +62,13 @@ class PrimarySchool extends School {
 
 class HighSchool extends School {
   constructor(name, numberOfStudents, sportsTeams) {
-    super(name, numberOfStudents);
-    this._level = "high";
+    super(name, "high", numberOfStudents);
+    this._numberOfStudents = numberOfStudents;
     this._sportsTeams = sportsTeams;
   }
 
   get sportsTeams() {
-    console.log(this._sportsTeams);
+    return this._sportsTeams;
   }
 }
 const lorraineHansbury = new PrimarySchool(
@@ -73,5 +77,35 @@ const lorraineHansbury = new PrimarySchool(
   "Students must be picked up by a parent, guardian, or a family member over the age of 13."
 );
 console.log(lorraineHansbury);
-
 lorraineHansbury.quickFacts();
+School.pickSubstituteTeacher([
+  "Jamal Crawford",
+  "Lou Williams",
+  "J. R. Smith",
+  "James Harden",
+  "Jason Terry",
+  "Manu Ginobli"
+]);
+
+const alSmith = new HighSchool("Al E. Smith", 415, [
+  "Baseball",
+  "BasketBall",
+  "Volleyball",
+  "Track and Field"
+]);
+console.log(alSmith.sportsTeams);
+
+class SchoolCatalog {
+  constructor(level, schoolObjects) {
+    this._level = level;
+    this._schoolObjects = objects;
+  }
+
+  get level() {
+    return this._level;
+  }
+
+  get schoolObjects() {
+    return this._schoolObjects;
+  }
+}
