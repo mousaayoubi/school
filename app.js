@@ -77,7 +77,9 @@ const lorraineHansbury = new PrimarySchool(
   "Students must be picked up by a parent, guardian, or a family member over the age of 13."
 );
 console.log(lorraineHansbury);
+
 lorraineHansbury.quickFacts();
+
 School.pickSubstituteTeacher([
   "Jamal Crawford",
   "Lou Williams",
