@@ -95,6 +95,7 @@ const alSmith = new HighSchool("Al E. Smith", 415, [
   "Volleyball",
   "Track and Field"
 ]);
+
 console.log(alSmith.sportsTeams);
 
 class SchoolCatalog {
